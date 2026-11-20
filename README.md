@@ -65,7 +65,7 @@ Select an element in the Elements panel and Class Lens lists its rules: `element
 
 ## Convert tab
 
-![Converting CSS to Tailwind classes](assets/convert.png)
+<img src="assets/convert.png" width="400" alt="Converting CSS to Tailwind classes">
 
 - **CSS → Tailwind**: paste declarations, rules or `@media` blocks. `:hover` becomes `hover:`, `@media (min-width: 768px)` becomes `md:`. Green classes come from your project, blue from Tailwind's default scale, yellow are arbitrary values.
 - **Tailwind → CSS**: paste classes and get the CSS they produce, with values worked out.
