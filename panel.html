@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="panel.css" />
+  </head>
+  <body>
+    <header class="bar">
+      <div class="target">
+        <code id="target">No element selected</code>
+        <span id="summary"></span>
+        <button id="reset" type="button" class="ghost" title="Put back the classes this element had before you edited it" hidden>Reset</button>
+        <button id="refresh" type="button" class="ghost icon" title="Refresh" aria-label="Refresh">&#x21bb;</button>
+      </div>
+      <nav class="tabs" role="tablist">
+        <button id="tabStyles" type="button" role="tab" aria-selected="true">Styles</button>
+        <button id="tabConvert" type="button" role="tab" aria-selected="false">Convert</button>
+      </nav>
+      <div class="tools" id="styleTools">
+        <div class="filter-wrap" id="filterWrap">
+          <div class="filter-inner">
+            <span class="filter-icon"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.4 10.4 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+            <input id="filter" type="text" placeholder="Filter classes, properties, values" spellcheck="false" autocomplete="off" tabindex="-1" />
+            <button id="filterClose" type="button" class="icon-btn" title="Close filter (Esc)" aria-label="Close filter" tabindex="-1">&#x2715;</button>
+          </div>
+        </div>
+        <div class="tool-row">
+        <button id="filterToggle" type="button" class="icon-btn" title="Filter ( / )" aria-label="Filter" aria-expanded="false" aria-controls="filterWrap"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.4 10.4 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <select id="show" title="Which rules to show" aria-label="Show">
+          <option value="all">All rules</option>
+          <option value="now">Applied now</option>
+          <option value="later">Not applied now</option>
+          <option value="overridden">Overridden</option>
+          <option value="nocss">No CSS</option>
+        </select>
+        <div class="copy-group">
+          <select id="copyFormat" title="Copy format, also used by each rule's copy button" aria-label="Copy format">
+            <option value="tailwind">Tailwind</option>
+            <option value="jsx">className</option>
+            <option value="css">CSS</option>
+            <option value="css-raw">CSS as written</option>
+          </select>
+          <button id="copyAll" type="button" title="Copy the whole element in this format">Copy</button>
+        </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="stylesView">
+      <div id="list" class="styles"></div>
+    </main>
+
+    <main id="convertView" hidden>
+      <div class="direction" role="group" aria-label="Direction">
+        <button type="button" data-dir="css" aria-pressed="true">CSS &#x2192; Tailwind</button>
+        <button type="button" data-dir="tw" aria-pressed="false">Tailwind &#x2192; CSS</button>
+        <button id="fromElement" type="button" class="ghost">Use this element</button>
+      </div>
+      <textarea id="convertInput" spellcheck="false"></textarea>
+      <div id="convertOutput" class="convert-output"></div>
+      <div class="convert-actions">
+        <button id="convertCopy" type="button">Copy</button>
+        <button id="convertApply" type="button">Add to element</button>
+      </div>
+    </main>
+
+    <div id="suggest" class="suggest" role="listbox" hidden></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="core.js"></script>
+    <script src="tailwind.js"></script>
+    <script src="panel.js"></script>
+  </body>
+</html>
